@@ -117,9 +117,22 @@ for(let t = 0; t<keysArray.length; t++){
 }
 
 document.body.addEventListener('keydown', (event) => {
+    
     console.log(event.key);
+
     let key = document.querySelector(`.key_${event.key}`);
+   
     console.log(key);
+
+    key.classList.add('keyActive');
+    setTimeout(() => key.classList.remove('keyActive'), 100);
+});
+
+keyboard.addEventListener('click', (event) => {
+    console.log(event.target.textContent);
+    textArea.value += event.target.textContent;
+
+    let key = document.querySelector(`.key_${event.target.textContent}`);
     key.classList.add('keyActive');
     setTimeout(() => key.classList.remove('keyActive'), 100);
 })
