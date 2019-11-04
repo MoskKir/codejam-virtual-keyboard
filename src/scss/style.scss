@@ -1,0 +1,36 @@
+body {    
+    margin: 0;
+    padding: 0;
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        .text-area {
+            width: 100%;
+        }
+    }
+}
+.row {
+    display: flex;
+    justify-content: center;
+}
+.key {
+    width: 20px;
+    // height: 30px;
+    padding: 10px;
+    margin: 2.5px;
+    text-align: center;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.key_ {
+    width: 150px;
+}
+.key_Enter {
+    width: 70px;
+}
+.key_Ctrl {
+    width: 70px;
+}
+.keyActive {
+    background-color: red;
+}
