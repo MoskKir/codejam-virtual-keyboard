@@ -7,30 +7,50 @@ body {
         .text-area {
             width: 100%;
         }
+        
     }
 }
 .row {
     display: flex;
     justify-content: center;
-}
-.key {
-    width: 20px;
-    // height: 30px;
-    padding: 10px;
-    margin: 2.5px;
-    text-align: center;
-    border: 1px solid black;
-    cursor: pointer;
-}
-.key_ {
-    width: 150px;
-}
-.key_Enter {
-    width: 70px;
-}
-.key_Ctrl {
-    width: 70px;
+    .key {
+        width: 20px;
+        padding: 10px;
+        margin: 2.5px;
+        text-align: center;
+        border: 1px solid black;
+        cursor: pointer;
+        &:hover {
+            background-color: rgba(128, 128, 128, 0.287);
+
+        }
+    }
+    .Key_Enter {
+        width: 80px;
+    }
+    
+    .Key_ {
+        width: 305px;
+    }
+    
+    .Key_Ctrl {
+        width: 21px;
+    }
+    .Key_Shift {
+        width: 70px;
+    }
+    .Key_CapsLK {
+        width: 60px;
+    }
+    .Key_Tab {
+        width: 72px;
+    }
+    .Key_Backspace {
+        width: 72px;
+    }
+    
 }
 .keyActive {
     background-color: red;
+    border-radius: 10px;
 }
