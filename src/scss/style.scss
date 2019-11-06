@@ -1,0 +1,66 @@
+body {    
+    margin: 0;
+    padding: 0;
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        .text-area {
+            width: 100%;
+        }
+        
+    }
+}
+.row {
+    display: flex;
+    justify-content: center;
+    .key {
+        width: 20px;
+        padding: 10px;
+        margin: 2.5px;
+        text-align: center;
+        border: 1px solid black;
+        box-shadow: 2px 2px 0px -1px rgba(0,0,0,0.9);
+        cursor: pointer;
+        &:hover {
+            background-color: red;
+
+        }
+    }
+    .Key_Enter {
+        width: 80px;
+    }
+    
+    .Key_ {
+        width: 305px;
+    }
+    
+    .Key_Ctrl {
+        width: 21px;
+    }
+    .Key_Shift {
+        width: 70px;
+    }
+    .Key_CapsLK {
+        width: 60px;
+    }
+    .Key_Tab {
+        width: 72px;
+    }
+    .Key_Backspace {
+        width: 72px;
+    }
+    
+}
+.keyActive {
+    box-shadow: -2px -2px 0px -1px rgba(0,0,0,0.9) !important;
+}
+.classRu {
+    background-image: url(http://icons.iconarchive.com/icons/wikipedia/flags/256/RU-Russia-Flag-icon.png);
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.classEn {
+    background-image: url(https://i.pinimg.com/originals/cc/1c/3b/cc1c3bc22e31ebe3264a867f5810d648.png);
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
