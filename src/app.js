@@ -225,7 +225,6 @@ const keysArrayEnCapsLK = [
         'Ctrl'
     ]
 ];
-
 const keysArrayRu = [
     [
         'ё',
@@ -461,19 +460,15 @@ textArea.cols = 30;
 container.classList.add('container');
     
 document.body.appendChild(container);
-
     
 textArea.classList.add('text-area');
 container.appendChild(textArea);
     
 keyboard.classList.add('keyboard', 'En');
 
-
 let capsLockSwitcher = 'off';
 let shiftSwitcher = 'off';
-let languageSwicher = 'en';
-
-
+let languageSwicher = '';
     
 let renderVirtualKeybord = (keysArray) => {   
 
@@ -497,9 +492,7 @@ let renderVirtualKeybord = (keysArray) => {
             let key = document.createElement('div');
             
             key.classList.add('key', `Key_${keysArray[t][i]}`);
-            row.appendChild(key);
-
-           
+            row.appendChild(key);          
 
             key.textContent = keysArray[t][i];
 
@@ -514,10 +507,8 @@ let renderVirtualKeybord = (keysArray) => {
                     return textArea.value += ' ';
                 } else if (keyTextContent === 'Tab') {
                     return textArea.value += '    ';
-
                 } else if (keyTextContent === 'Enter') {
                     return textArea.value += '\n';
-
                 } else if (keyTextContent === 'Ctrl') {
                     return textArea.value += '';
                 } else if (keyTextContent === 'Alt') {
@@ -538,8 +529,7 @@ let renderVirtualKeybord = (keysArray) => {
                             return renderVirtualKeybord(keysArrayRu);
                         }
                     }
-                } else if (keyTextContent === 'Shift') { 
-
+                } else if (keyTextContent === 'Shift') {
                     if (shiftSwitcher === 'off') {
                         shiftSwitcher = 'on';
                         if (languageSwicher === 'en') {
@@ -555,35 +545,23 @@ let renderVirtualKeybord = (keysArray) => {
                             return renderVirtualKeybord(keysArrayRu);
                         }
                     }
-
-
                 } else if (keyTextContent === 'Win') {
                     return textArea.value += '';
                 } else if (keyTextContent === 'Backspace') {
                     return textArea.value = textArea.value.slice(0, textArea.value.length - 1);
-                }
-
-                
-
+                }       
                 textArea.value += event.target.textContent;
-            })
-            
+            })    
         }
     }  
 }
 
 
-let loadLanguage = () => {
-    // keyCode: 83 key: s или ы
+let loadLanguage = () => {  
 
     document.body.addEventListener('keydown', (event) => {
-        // console.log(event)
-        // console.log(event.KeyboardEvent)
-        
-        // console.log(event.code)
-        // console.log(event.key)
-        let chekLanguage = `Key${event.key.toUpperCase()}`;
-        
+
+        let chekLanguage = `Key${event.key.toUpperCase()}`;        
         
         if (event.code === chekLanguage ) {
             renderVirtualKeybord(keysArrayEn);
@@ -593,7 +571,6 @@ let loadLanguage = () => {
     })
     
 };
-window.onload = loadLanguage();
 
 
 
@@ -613,10 +590,8 @@ document.body.addEventListener('keydown', (event) => {
         key.classList.add('keyActive');
         setTimeout(() => key.classList.remove('keyActive'), 100);
     }
-
 });
 
-// Этот работает нормально
 let runOnKeys = (func, ...codes) => {
     let pressed = new Set();
 
@@ -636,12 +611,10 @@ let runOnKeys = (func, ...codes) => {
     document.addEventListener('keyup', event => {
       pressed.delete(event.code);
     });
-
 }
 
 runOnKeys(
-    () => {
-        
+    () => {        
         if (keyboard.classList.contains('En')) {
             renderVirtualKeybord(keysArrayRu);
             keyboard.classList.remove('En');
@@ -666,24 +639,37 @@ let choiseLanguage = () => {
     
     
     
-    text.innerHTML = `Please put on any button on you keybord or choise with display`;
+    text.innerHTML = `Please choise language`;
     
     ruLanguage.innerHTML = `Русский`;
+    ruLanguage.classList.add('classRu');
     enLanguage.innerHTML = `Engles`;
+    enLanguage.classList.add('classEn')
         
     container.appendChild(text);
     text.appendChild(ruLanguage);
     text.appendChild(enLanguage);
     
     ruLanguage.addEventListener('click', () => {
-        languageSwicher = 'ru'; 
+        languageSwicher = 'ru';
+        localStorage.setItem('languageKeyboard', languageSwicher); 
         renderVirtualKeybord(keysArrayRu);
     });
         
     enLanguage.addEventListener('click', () => {
-        languageSwicher = 'en'; 
+        languageSwicher = 'en';
+        localStorage.setItem('languageKeyboard', languageSwicher); 
         renderVirtualKeybord(keysArrayEn);
     });
 }
 
 choiseLanguage();
+
+window.onload = () => {
+    languageSwicher = localStorage.getItem('languageKeyboard');
+    if (languageSwicher === 'en') {
+        return renderVirtualKeybord(keysArrayEn);    
+    } else if (languageSwicher === 'ru') {
+        return renderVirtualKeybord(keysArrayRu);
+    }
+}
